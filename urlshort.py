@@ -31,3 +31,13 @@ def your_url():
     else:
         return redirect(url_for('index'))
 
+
+@app.route('/<string:code>')
+def redirect_to_url(code):
+    if os.path.exists('urls.json'):
+        with open('urls.json') as url_file:
+            urls = json.load(url_file)
+            if code in urls.keys():
+                if 'url' in urls[code].keys():
+                    return redirect(urls[code]['url'])
+
