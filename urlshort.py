@@ -31,7 +31,6 @@ def your_url():
     else:
         return redirect(url_for('index'))
 
-
 @app.route('/<string:code>')
 def redirect_to_url(code):
     if os.path.exists('urls.json'):
